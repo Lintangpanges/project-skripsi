@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content  %}  
+<form method="POST" action="" class="multisteps-form__form mb-8"  enctype="multipart/form-data"> 
+  {% csrf_token %}
+  {{fo}}
+                                    {{form.first_name|as_crispy_field}}
+                                    {{form.last_name|as_crispy_field}}
+                                    {{form.username|as_crispy_field}}
+                                    {{form.email|as_crispy_field}}
+                                    {{form2.alamat|as_crispy_field}}
+                                    {{form2.no_hp|as_crispy_field}}
+                                    {{form2.pendidikan_terakhir|as_crispy_field}}
+                                    {{form2.tempat_lahir|as_crispy_field}}
+                                    {{form2.tanggal_lahir|as_crispy_field}}
+                                    {{form2.nbm|as_crispy_field}}
+                                    {{form2.status|as_crispy_field}}
+                                    {{form2.jabatan|as_crispy_field}}
+                                    {{form2.pangkat|as_crispy_field}}
+                                    {{form2.profile_pic|as_crispy_field}}  
+
+                                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>  
+                                  </form> 
+          <script>
+            var form_fields = document.getElementsByTagName('input')  
+            for (var field in form_fields){	
+            form_fields[field].className += ' multisteps-form_input form-control'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        </script>
+          <!-- <script src="{% static "assets/js/core/popper.min.js" %}"></script>
+
+          <script src="{% static "assets/js/core/popper.min.js" %}"></script>
+          <script src="{% static "assets/js/core/bootstrap.min.js" %}"></script> -->
+          <script src="{% static "assets/js/plugins/perfect-scrollbar.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/smooth-scrollbar.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/multistep-form.js" %}"></script>
+          <!-- Kanban scripts -->
+          <script src="{% static "assets/js/plugins/dragula/dragula.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/jkanban/jkanban.js" %}"></script>
+
+
+ 
+{% endblock content  %}
+

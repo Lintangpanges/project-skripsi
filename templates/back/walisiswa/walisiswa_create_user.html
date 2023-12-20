@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content  %}    
+         
+           <main class="main-content position-relative border-radius-lg ">
+          
+            <!-- End Navbar -->
+            <div class="container-fluid py-4">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="multisteps-form mb-5">
+                    <!--progress bar-->
+                    <div class="row">
+                      <div class="col-12 col-lg-8 mx-auto my-4">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="multisteps-form__progress">
+                              <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
+                                <span>User Info</span>
+                              </button>
+                              <button class="multisteps-form__progress-btn" type="button" title="Address">Data Walisiswa</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--form panels-->
+                    <div class="row">
+                      <div class="col-12 col-lg-8 m-auto">
+                        <form method="POST" action="" class="multisteps-form__form mb-8" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{fo}}
+                          <!--single form panel-->
+                          <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
+                            <h5 class="font-weight-bolder mb-0">Data User</h5>
+                            <div class="multisteps-form__content">
+                              <div class="row mt-3">
+                                <div class="col-12 col-sm-6">
+                                 
+                                  <div >
+                                    {{form.first_name|as_crispy_field}}
+                                  </div>
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                  
+                                  <div >
+                                    {{form.last_name|as_crispy_field}}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mt-3">
+                                <div class="col-12 col-sm-6">
+                                 
+                                  <div >
+                                    {{form.username|as_crispy_field}}
+                                  </div>
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                  
+                                  <div >
+                                    {{form.email|as_crispy_field}}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="button-row d-flex mt-4">
+                                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
+                            <h5 class="font-weight-bolder mb-0">Data Walisiswa</h5>
+                            <div class="multisteps-form__content">
+                              <div class="row mt-3">
+                                <div class="col-12 col-sm-6">
+                                  
+                                  <div >
+                                    {{form2.alamat|as_crispy_field}}
+                                  </div>
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                  
+                                  <div >
+                                    {{form2.pendidikan_terakhir|as_crispy_field}}
+                                  </div>
+                                </div>
+                              </div>                              
+                              <div class="row mt-3">
+                                <div class="col-12 col-sm-6">
+                                  
+                                  <div >
+                                    {{form2.pekerjaan|as_crispy_field}}
+                                  </div>
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                 
+                                  <div >
+                                    {{form2.penghasilan|as_crispy_field}}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mt-3">
+                                <div class="col-12 col-sm-6">
+                                 
+                                  <div >
+                                    {{form2.no_hp|as_crispy_field}}
+                                  </div>
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                  
+                                  <div >
+                                    {{form2.profile_pic|as_crispy_field}}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="button-row d-flex mt-4">
+                                <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
+                                <input type="submit"  name="Send" button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"></button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </main>
+          
+          
+          
+          <!-- <script src="{% static "assets/js/core/popper.min.js" %}"></script>
+
+          <script src="{% static "assets/js/core/popper.min.js" %}"></script>
+          <script src="{% static "assets/js/core/bootstrap.min.js" %}"></script> -->
+          <script src="{% static "assets/js/plugins/perfect-scrollbar.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/smooth-scrollbar.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/multistep-form.js" %}"></script>
+          <!-- Kanban scripts -->
+          <script src="{% static "assets/js/plugins/dragula/dragula.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/jkanban/jkanban.js" %}"></script>
+     
+
+ 
+{% endblock content  %}

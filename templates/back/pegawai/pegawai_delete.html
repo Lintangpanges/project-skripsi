@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content  %}
+
+<h3 text-white>Betulan Mau Hapus "{{item}}"?</h3>
+<form action="{% url 'delete_pegawai' item.id %}" method="POST">
+
+    {% csrf_token %}
+    <a href="{% url 'pegawai' %}">Cancel</a>
+    <input type="submit" name="Confirm">
+</form>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<!-- {% load crispy_forms_tags %} -->
+{% load static %}
+
+
+{% block content  %} 
+<div class="col-8 col-8 mx-auto">
+<div class="card center">
+    <div class="card-body">
+    
+    
+ 
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- {{form}}
+    <input type="file"  name="file"> 
+    <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="submit">upload</button>
+</form> -->
+
+<label for="formFileSm" class="form-label">Large file input example</label>
+    <input class="form-control form-control-sm" id="formFileSm" type="file" name='file'> 
+    <br>
+  </div>
+  <div>
+  <button class="btn bg-gradient-success ms-auto mb-0 js-btn-next" type="submit">upload</button>
+  <button class="btn bg-gradient-info ms-auto mb-0 js-btn-next" type="download">download Template</button>
+  </div>
+  <br>
+</div>
+
+ </div>
+</div>
+<div>
+</div>
+    
+
+{% endblock content %}

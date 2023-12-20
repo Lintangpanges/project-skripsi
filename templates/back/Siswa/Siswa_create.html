@@ -1,0 +1,123 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content  %}
+
+<main class="main-content position-relative border-radius-lg ">
+  <div class="container-fluid py-4">
+    <div class="row ">
+      <div class="col-12">
+          <div class="row">
+            <div class="col-12 col-lg-8 m-auto">
+              <form  method="POST" action="" class="multisteps-form__form mb-12">
+                {% csrf_token %}
+                <div class="card mt-4" id="basic-info">
+                <div class="card-header">                          
+                    <h5 class="font-weight-bolder mb-0">Siswa helo</h5>
+                    <p class="mb-0 text-sm">Mandatory informations</p>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="row">
+                      <div class="col-sm-4 col-6">
+                        <div>
+                          {{form.nama_siswa|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div class="col-sm-8">
+                        <div class="row">
+                          <div class="col-sm-6 col-5">
+                            <div>
+                          {{form.nis|as_crispy_field}}
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-5">
+                            <div>
+                              {{form.nisn|as_crispy_field}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4 col-6">
+                        <div>
+                          {{form.tahun_angkatan|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div class="col-sm-8">
+                        <div class="row">
+                          <div class="col-sm-6 col-5">
+                            <div>
+                          {{form.tempat_lahir|as_crispy_field}}
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-5">
+                            <div>
+                              {{form.tanggal_lahir|as_crispy_field}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-12 col-sm-6">
+                        <div class="row">
+                          {{form.jenis_kelamin|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-6 mt-3 mt-sm-0">                        
+                        <div class="row">
+                          {{form.alamat|as_crispy_field}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4 col-6">
+                        <div>
+                          {{form.shadow_teacher|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div class="col-sm-8">
+                        <div class="row">
+                          <div class="col-sm-6 col-5">
+                            <div>
+                          {{form.status|as_crispy_field}}
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-5">
+                            <div>
+                              {{form.is_abk|as_crispy_field}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-row d-flex mt-4">                        
+                      <input type="submit"  name="Submit" button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            </div>
+          
+        </div>
+      </div>  
+</main>
+           <script>
+            
+      
+              var form_fields = document.getElementsByTagName('input')
+             
+        
+        
+              for (var field in form_fields){	
+              form_fields[field].className += ' form-control'
+              }
+
+              Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        </script> 
+     
+{% endblock content  %}
+

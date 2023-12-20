@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+  
+{% block content  %} 
+<div class="alert alert-warning" role="alert">
+<p>ISI TERLEBIH DAHULU form ruangan, form guru, form waktu, form jadwal kelas, form Sesi Jadwal 
+banyak data ruangan dan data waktu harus sama agar algoritma berjalan</p>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="card">
+    <div class="card-body">
+        <a href="{% url 'timetabel' %}" class="btn btn-primary btn-lg">Generate jadwal </a>
+    </div>
+  </div>
+
+      
+{% endblock content  %}

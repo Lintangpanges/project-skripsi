@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content  %} 
+{% for section in sections %}  
+ 
+<link id="pagestyle" href="{% static "assets/css/tess.css" %}" rel="stylesheet"/>
+    
+      <main class="main-content position-relative border-radius-lg ">
+      <div class="container-fluid py-4">       
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="card">
+              <!-- Card header -->
+             <div class="card-header pb-0">
+                       <div class="d-lg-flex">
+                         <div>
+                           <h5 class="mb-0">{{ section.section_id }} ({{ section.kelasbeta }})</h5>
+                           
+                         </div>
+                         <div class="ms-auto my-auto mt-lg-0 mt-4">
+                           <div class="ms-auto my-auto">
+                             <!--- <a href="{% url 'create_kelas' %}" class="btn bg-gradient-primary btn-sm mb-0" target="_blank">+&nbsp; Kelas Baru</a>
+                              <a href="{% url 'importkelas' %}" class="btn btn-outline-primary btn-sm mb-0" target="_blank"> Import</a> 
+                              <a href="{% url 'exportkelas' %}" class="btn btn-outline-primary btn-sm mb-0" target="_blank"> Export</a>    --->                 
+                           </div>
+                         </div>
+                       </div>
+              </div>
+                     <!-- <div class="table-responsive">
+                      <table class="table table-striped" id="datatable-search">
+                        <thead class="thead-light">
+                          <tr>
+                            <th>No</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Ruang Kelas</th>   
+                            <th>Kuota</th>   
+                            <th>Guru Pengampu</th>  
+                            <th>Hari</th>   
+                            <th>Jam Pelajaran</th>   
+                          </tr>
+                        </thead>
+                        <tbody class="tes">              
+                          <tr>
+                            <td>1</td>
+                            <td>mtk</td>
+                            <td>r1</td>
+                            <td>40</td>
+                            <td>saya</td>
+                            <td>senin</td>
+                            <td>mana aja</td>
+                            <td class="text-sm font-weight-small">{{rg.r_number}}</td>
+                            <td class="text-sm font-weight-normal">{{rg.r_kapasistas}}</td>                     
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div> -->
+              <div class="table-responsive mt-3">
+                <table class="table  table-striped" >
+                  <thead class="thead-light">
+                    <tr>
+                      <th>No</th>
+                       <th>Mata Pelajaran</th>
+                       <th>Guru Pengampu</th>
+                        <th>Ruangan</th>
+                        <th>Hari</th>
+                        <th>Jam Pelajaran</th>                    
+                    </tr>
+                  </thead>
+                  <tbody class="tes">
+                    {% for class in jadwal %}
+                    {% if class.section == section.section_id %}
+                      <tr>
+                        <td>{{class.section_id}}</td>
+                        <td>{{class.matapelajaran}}</td>
+                        <td>{{class.guru}}</td>
+                        <td>{{class.ruangan}}</td>
+                        <td>{{class.waktubelajar.hari}}</td>
+                        <td>{{class.waktubelajar.jam}}</td>
+
+                        <!-- <th>{{class.section_id}}</th>
+                        <td>{{class.matapelajaran}}</td>
+                        <td>{{class.ruangan}}</td>
+                        <td>{{class.guru}}</td>
+                        <td>{{class.waktubelajar}}</td> -->
+                      </tr>
+                      {% endif %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</main>
+
+<!--<th class="">{{ section.section_id }} ({{ section.department }})</th>
+    <table>
+     
+      <tr>
+        <th>Class</th>
+        <th>Course</th>
+        <th>Venue(Block- Room)</th>
+        <th>Instructor</th>
+        <th>Class Timing</th>
+      </tr>
+      {% for class in schedule %}
+      {% if class.section == section.section_id %}
+        <tr>
+          <th>{{class.section_id}}</th>
+          <td>{{class.course}}</td>
+          <td>{{class.room}}</td>
+          <td>{{class.instructor}}</td>
+          <td>{{class.meeting_time}}</td>
+           <th>{{class.section_id}}</th>
+          <td>{{class.matapelajaran}}</td>
+          <td>{{class.ruangan}}</td>
+          <td>{{class.guru}}</td>
+          <td>{{class.waktubelajar}}</td> -->
+       <!---</tr>
+        {% endif %}
+      {% endfor %}
+    </table>-->
+
+
+    
+
+
+      <script src="{% static "assets/js/plugins/datatables.js" %}"></script>
+      <script>
+         if (document.getElementById('datatable-search')) {
+            const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {
+            searchable: true,
+            fixedHeight: false,
+            perPage: 5
+            });
+            
+            document.querySelectorAll(".export").forEach(function(el) {
+            el.addEventListener("click", function(e) {
+               var type = el.dataset.type;
+
+               var data = {
+                  type: type,
+                  filename: "soft-ui-" + type,
+               };
+
+               if (type === "csv") {
+                  data.columnDelimiter = "|";
+               }
+
+               dataTableSearch.export(data);
+            });
+            });
+         };
+      </script>
+    
+
+{% endfor %}
+{% endblock content  %}

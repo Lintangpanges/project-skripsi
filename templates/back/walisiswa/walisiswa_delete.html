@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content  %}
+<div class="card card-frame">
+  <div class="card-body">
+<h3 text-white>apa anda yakin ingin"{{item}}"?</h3>
+<form action="{% url 'delete_walisiswa' item.id %}" method="POST">
+
+    {% csrf_token %}
+    <a href="{% url 'walisiswa' %}" class ="btn btn-primary">Cancel</a>
+    <input type="submit" class ="btn btn-danger" name="Confirm">
+</form>
+</div>
+</div>
+
+{% endblock %}

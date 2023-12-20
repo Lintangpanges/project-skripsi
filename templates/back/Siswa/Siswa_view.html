@@ -1,0 +1,213 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{%load crispy_forms_tags%}
+{% block content  %}    
+
+<main class="main-content max-height-vh-100 h-100">
+    <div class="container-fluid my-5 py-2">
+      <div class="row mb-5">
+        <div class="col-lg-3">
+          <div class="card position-sticky top-1">
+            <ul class="nav flex-column bg-white border-radius-lg p-3">
+              <li class="nav-item">
+                <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#profile">
+                  <i class="ni ni-spaceship me-2 text-dark opacity-6"></i>
+                  <span class="text-sm">Profile</span>
+                </a>
+              </li>
+              <li class="nav-item pt-2">
+                <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#datasiswa">
+                  <i class="ni ni-badge me-2 text-dark opacity-6"></i>
+                  <span class="text-sm">Data Siswa</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9 mt-lg-0 mt-4">
+        <form  method='POST' action="" class="multisteps-form__form mb-12" enctype="multipart/form-data">
+         {%csrf_token %}
+
+          <!-- Card Profile -->
+          <div class="card card-body" id="profile">
+            <div class="row justify-content-center align-items-center">
+              <div class="col-sm-auto col-4">
+              </div>
+              <div class="col-sm-auto col-8 my-auto">
+                <div class="h-100">
+                  <h5 class="mb-1 font-weight-bolder">
+                    {{user.username}}
+                  </h5>
+                </div>
+              </div>
+              <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
+              </div>
+            </div>
+          </div>
+          <!-- Card Basic Info -->
+        
+          <!-- Card Data Pegawai -->
+          <div class="card mt-4" id="datasiswa">
+            <div class="card-header">
+              <h5>Data Siswa</h5>
+            </div>
+            <div class="card-body pt-0">
+              <div class="row">
+                <div class="col-6">
+                  <label class="form-label"></label>
+                  <div>
+                    {{form2.nis|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label"></label>
+                  <div>
+                    {{form2.nisn|as_crispy_field}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4 col-6">
+                  <label class="form-label mt-4"></label>
+                  <div>
+                    {{form2.tahun_angkatan|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="row">
+                    <div class="col-sm-6 col-5">
+                      <label class="form-label mt-4"></label>
+                      <div>
+                        {{form2.tempat_lahir|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-5">
+                      <label class="form-label mt-4"></label>
+                      <div>
+                        {{form2.tanggal_lahir|as_crispy_field}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4 col-6">
+                  <label class="form-label mt-4"></label>
+                  <div>
+                    {{form2.nama_siswa|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="row">
+                    <div class="col-sm-6 col-5">
+                      <label class="form-label mt-4"></label>
+                      <div>
+                        {{form2.jenis_kelamin|as_crispy_field}}
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-5">
+                      <label class="form-label mt-4"></label>
+                      <div>
+                        {{form2.status|as_crispy_field}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 mb-3">
+                  <label for=""></label>
+                  <label class="form-label mt-4">Walisiswa</label>
+                  <div>
+                    {{user.username}}
+                    
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label mt-4"></label>
+                  <div>
+                    {{form2.alamat|as_crispy_field}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 align-self-center">
+                  <label class="form-label mt-4">ABK</label>
+                  <div>
+                    {{form2.is_abk|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label mt-4"></label>
+                  <div>
+                    {{form2.shadow_teacher|as_crispy_field}}
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="button-row">                        
+                <input type="submit"  name="Update" button class="btn bg-gradient-dark  btn-sm float-end mt-6 mb-0" type="button"></button>
+                <button class="btn bg-gradient-light mt-6 mb-0 js-btn-prev" type="button" title="Prev">
+                <a href="{% url 'userpage_pegawai'%}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                  Back
+                </a>
+              </button>
+                
+              </div>
+              <!-- <button class="btn bg-gradient-dark btn-sm float-end mt-6 mb-0">Update password</button> -->
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+
+
+      <footer class="footer pt-3  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                for a better web.
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!--   Core JS Files   -->
+  <script src="{% static "assets/js/core/popper.min.js" %}"></script>
+  <script src="{% static "assets/js/core/bootstrap.min.js" %}"></script>
+  <script src="{% static "assets/js/plugins/perfect-scrollbar.min.js" %}"></script>
+  <script src="{% static "assets/js/plugins/smooth-scrollbar.min.js" %}"></script>
+  <script src="{% static "assets/js/plugins/choices.min.js" %}"></script>
+  <!-- Kanban scripts -->
+  <script src="{% static "assets/js/plugins/dragula/dragula.min.js" %}"></script>
+  <script src="{% static "assets/js/plugins/jkanban/jkanban.js" %}"></script>
+
+{% endblock content  %}
+

@@ -1,0 +1,193 @@
+
+{% load auth_extras %}
+{% load static %}
+
+{% url 'index' as index %}
+{% url 'kelas' as kelas %}
+{% url 'create_kelas' as create_kelas %}
+{% url 'ruangan' as ruangan %}
+{% url 'create_ruangan' as create_ruangan %}
+{% url 'jam' as jam %}
+{% url 'create_jam' as create_jam %}
+{% url 'hari' as hari %}
+{% url 'create_hari' as create_hari %}
+{% url 'mapel' as mapel %}
+{% url 'create_mapel' as create_mapel %}
+{% url 'guru' as guru %}
+{% url 'create_guru' as create_guru %}
+{% url 'tugas' as tugas %}
+{% url 'create_tugas' as create_tugas %}
+{% url 'generate' as generate %}
+{% url 'jadwal' as jadwal %}
+
+
+<!-- Pegawai -->
+{% url 'create_pegawai' as create_pegawai %}
+{% url 'update_pegawai' as update_pegawai %}
+{% url 'pegawai' as pegawai %}
+<!-- Walisiswa -->
+{% url 'walisiswa' as walisiswa %}
+{% url 'create_walisiswa' as create_walisiswa %}
+{% url 'update_pegawai' as update_pegawai %}
+<!-- Siswa -->
+{% url 'update_pegawai' as update_pegawai %}
+{% url 'Siswa' as Siswa %}
+
+<!-- Penjadwalan -->
+<!-- ruangan -->
+<!-- {% url 'ruangan' as ruangan %}
+{% url 'create_ruangan' as create_ruangan %}
+{% url 'update_ruangan' as update_ruangan %}
+
+{% url 'guru' as guru %}
+{% url 'create_guru' as create_guru %}
+
+{% url 'waktubelajar' as waktubelajar %}
+{% url 'create_waktu' as  create_waktu %}
+
+{% url 'matapelajaran' as matapelajaran %}
+{% url 'create_mapel' as create_mapel %}
+
+
+
+{% url 'kelasbeta' as kelasbeta %}
+{% url 'create_kelasb' as create_kelasb %}
+
+{% url 'section' as section %}
+{% url 'create_section' as create_section %} -->
+
+
+  <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == index %} active {% endif %}" href="{% url 'index' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-align-left-2 text-dark text-sm"></i>
+          </div>
+          <span class="nav-link-text ms-1">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#DataEx" class="nav-link 
+        {% if request.path == create_pegawai %} active {% endif %} 
+        {% if request.path == pegawai %} active {% endif %} 
+        {% if request.path == walisiswa %} active {% endif %}
+        {% if request.path == create_walisiswa %} active {% endif %} 
+        {% if request.path == Siswa %} active {% endif %}" 
+        aria-controls="dataEx" role="button" aria-expanded="">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-ui-04 text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Data</span>
+        </a>
+        <div class="collapse " id="DataEx">
+          
+          <ul class="nav ms-4">
+            <li class="nav-item  ">
+              <a class="nav-link 
+              {% if request.path == pegawai %} active {% endif %}
+              {% if request.path == create_pegawai %} active {% endif %} 
+              " href="{% url 'pegawai' %}">
+                <span class="sidenav-mini-icon"> G </span>
+                <span class="sidenav-normal"> Guru </span>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link 
+              {% if request.path == walisiswa %} active {% endif %}
+              {% if request.path == create_walisiswa %} active {% endif %} 
+        " href="{% url 'walisiswa' %}">
+                <span class="sidenav-mini-icon"> W </span>
+                <span class="sidenav-normal"> Wali siswa</span>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link {% if request.path == Siswa %} active {% endif %} " href="{% url 'Siswa' %}">
+                <span class="sidenav-mini-icon"> S </span>
+                <span class="sidenav-normal"> Siswa </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == kelas %} active {% endif %} {% if request.path == create_kelas %} active {% endif %}" href="{% url 'kelas' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-map-big text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Kelas</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == create_ruangan %} active {% endif %} {% if request.path == ruangan %} active {% endif %}" href="{% url 'ruangan' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-shop text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Ruangan</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == create_jam %} active {% endif %} {% if request.path == jam %} active {% endif %}" href="{% url 'jam' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-time-alarm text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Jam</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == create_hari %} active {% endif %} {% if request.path == hari %} active {% endif %}" href="{% url 'hari' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-watch-time text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Hari</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == create_mapel %} active {% endif %} {% if request.path == mapel %} active {% endif %}" href="{% url 'mapel' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-books text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Mapel</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == create_guru %} active {% endif %} {% if request.path == guru %} active {% endif %}" href="{% url 'guru' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-single-02 text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Guru</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == create_tugas %} active {% endif %} {% if request.path == tugas %} active {% endif %}" href="{% url 'tugas' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-single-copy-04 text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Tugas</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == generate %} active {% endif %}" href="{% url 'generate' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-sound-wave text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Generate Jadwal</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == jadwal %} active {% endif %}" href="{% url 'jadwal' %}">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <i class="ni ni-calendar-grid-58 text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Jadwal</span>
+        </a>
+      </li>
+
+
+    </ul> 
+  </div>
+ 
+
+
+
+

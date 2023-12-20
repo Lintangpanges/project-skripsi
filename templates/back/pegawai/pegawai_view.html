@@ -1,0 +1,250 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content  %}    
+
+<main class="main-content max-height-vh-100 h-100">
+    <div class="container-fluid my-5 py-2">
+      <div class="row mb-5">
+        <div class="col-lg-3">
+          <div class="card position-sticky top-1">
+            <ul class="nav flex-column bg-white border-radius-lg p-3">
+              <li class="nav-item">
+                <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#profile">
+                  <i class="ni ni-spaceship me-2 text-dark opacity-6"></i>
+                  <span class="text-sm">Profile</span>
+                </a>
+              </li>
+              <li class="nav-item pt-2">
+                <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#basic-info">
+                  <i class="ni ni-books me-2 text-dark opacity-6"></i>
+                  <span class="text-sm">Basic Info</span>
+                </a>
+              </li>
+              <li class="nav-item pt-2">
+                <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#datapegawai">
+                  <i class="ni ni-badge me-2 text-dark opacity-6"></i>
+                  <span class="text-sm">Data Pegawai</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9 mt-lg-0 mt-4">
+        <form  method='POST' action="" class="multisteps-form__form mb-12" enctype="multipart/form-data">
+         {%csrf_token %}
+
+          <!-- Card Profile -->
+          <div class="card card-body" id="profile">
+            <div class="row justify-content-center align-items-center">
+              <div class="col-sm-auto col-4">
+                <div class="avatar avatar-xl position-relative">
+                  <img class = "profile-pic w-100 border-radius-lg shadow-sm" alt="bruce"src="{{request.user.pegawai.profile_pic.url}}" >
+                </div>
+              </div>
+              <div class="col-sm-auto col-8 my-auto">
+                <div class="h-100">
+                  <h5 class="mb-1 font-weight-bolder">
+                    {{user.username}}
+                  </h5>
+                </div>
+              </div>
+              <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
+              </div>
+            </div>
+          </div>
+          <!-- Card Basic Info -->
+          <div class="card mt-4" id="basic-info">
+            <div class="card-header">
+              <h5>Basic Info</h5>
+            </div>
+            <div class="card-body pt-0">
+              <div class="row">
+                <div class="col-6">
+                  <label class="form-label">Nama Depan</label>
+                  <div class="input-group ">
+                    {{form.first_name}}
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Nama Belakang</label>
+                  <div class="input-group ">
+                   {{form.last_name}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label class="form-label mt-4">Username</label>
+                  <div class="input-group ">
+                    {{form.username}}
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label mt-4">Email</label>
+                  <div class="input-group ">
+                    {{form.email}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card Data Pegawai -->
+          <div class="card mt-4" id="datapegawai">
+            <div class="card-header">
+              <h5>Data Pegawai</h5>
+            </div>
+            <div class="card-body pt-0">
+              <div class="row">
+                <div class="col-6">
+                  <div>
+                    {{form2.alamat|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Nomor Telpon</label>
+                  <div class="input-group ">
+                    {{form2.no_hp}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  
+                  <div>
+                    {{form2.pendidikan_terakhir|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-6 col-6">
+                      <label class="form-label mt-4">Tempat Lahir</label>
+                      <div class="input-group ">
+                        {{form2.tempat_lahir}}
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-6">
+                      <label class="form-label mt-4">Tanggal Lahir</label>
+                      <div class="input-group ">
+                        {{form2.tanggal_lahir}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label class="form-label mt-auto"></label>
+                  <div class="col-12 ">
+                    {{form2.nbm|as_crispy_field}}
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label mt-auto"></label>
+                  <div class="col-12 ">
+                    {{form2.status|as_crispy_field}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label class="form-label mt-4">Jabatan</label>
+                  <div class="input-group ">
+                    {{form2.jabatan}}
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label mt-4">Gol</label>
+                  <div class="input-group ">
+                    {{form2.gol}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 align-self-center">
+                  <label class="form-label mt-4">Pangkat</label>
+                  <div class="input-group ">
+                    {{form2.pangkat}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label mt-4">TMT</label>
+                  <div class="input-group ">
+                    {{form2.tmt}}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-23 align-self-center">
+                  <div class="col-23">
+                    {{form2.profile_pic|as_crispy_field}}
+                  </div>
+                </div>
+              </div>
+              <div class="button-row d-flex mt-4">
+                <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">
+                  <a href="{% url 'userpage_pegawai'%}" class="mx-3" data-bs-toggle="tooltip">
+                    Back
+                  </a>
+                </button>
+                <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>                                  
+              </div>
+            
+              <!-- <button class="btn bg-gradient-dark btn-sm float-end mt-6 mb-0">Update password</button> -->
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+
+
+      <footer class="footer pt-3  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                for a better web.
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+   <Script>
+    var form_fields = document.getElementsByTagName('input')
+              form_fields[1].placeholder='Username...';
+              form_fields[2].placeholder='Nomor Handphone...';
+              form_fields[3].placeholder='Tempat Lahir...';
+              form_fields[5].placeholder='NBM...';
+              form_fields[6].placeholder='Jabatan...';
+              form_fields[7].placeholder='Gol...';
+              
+              for (var field in form_fields){	
+              form_fields[field].className += ' multisteps-form_input form-control'
+              }
+              Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+   </Script>
+  </main>
+ {% endblock content %}

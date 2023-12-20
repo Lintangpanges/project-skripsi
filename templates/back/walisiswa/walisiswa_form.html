@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content  %}    
+
+<main class="main-content position-relative border-radius-lg ">
+  <div class="container-fluid py-4">       
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header pb-0">
+            <div class="d-lg-flex">
+              <div>
+                <h5 class="mb-0">Table Walisiswa</h5>
+                <p class="text-sm mb-0">
+                  A lightweight, extendable, dependency-free javascript HTML table plugin.
+                </p>
+              </div>
+              <div class="ms-auto my-auto mt-lg-0 mt-4">
+                <div class="ms-auto my-auto">
+                  <a href="{% url 'create_walisiswa' %}" class="btn bg-gradient-primary btn-sm mb-0">+&nbsp; Wali Siswa Baru</a>
+                  <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#import">
+                    Import
+                  </button>
+                  <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog mt-lg-10">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="ModalLabel">Import CSV</h5>
+                          <i class="fas fa-upload ms-3"></i>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>You can browse your computer for a file.</p>
+                          <input type="text" placeholder="Browse file..." class="form-control mb-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="importCheck" checked="">
+                            <label class="custom-control-label" for="importCheck">I accept the terms and conditions</label>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn bg-gradient-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn bg-gradient-primary btn-sm">Upload</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="button">Export</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-0">
+            <div class="table-responsive">
+              <table class="table table-flush" id="datatable-search">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Username</th>
+                    <th>Alamat</th>
+                    <th>No Hp</th>
+                    <th>Pendidikan Terakhir</th>
+                    <th>Pekerjaan</th>
+                    <th>Penghasilan</th>
+                    <th>Tindakan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%for w in form_Walisiswa %}
+                  <tr>
+                     
+                    <td class="text-sm">{{w.user}}</td>
+                    <td class="text-sm">{{w.alamat}}</td>
+                    <td class="text-sm">{{w.no_hp}}</td>
+                    <td class="text-sm">{{w.pendidikan_terakhir}}</td>
+                    <td class="text-center">{{w.pekerjaan}}</td>
+                    <td class="text-sm">{{w.penghasilan}}</td>
+                    <td class="text-sm">
+                      <a href="{% url 'update_walisiswa' w.id %}" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                         ubah
+                       </a>
+                       <button type="button"  data-bs-toggle="modal" class="btn btn-outline-danger" data-bs-target="#Delete{{w.id}}" >
+                        hapus
+                      </button> 
+                    </td>
+                  </tr>
+                  <div class="modal fade" id="Delete{{w.id}}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog mt-lg-10">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="ModalLabel">Hapus{{k.user}}</h5>
+                          <i class="fas fa-upload ms-3"></i>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Are you sure you want to delete<strong> {{w.user}}</strong> permanently?</p>
+                        </div>
+                        <div class="modal-footer">
+                        <form method="POST" action="{% url 'delete_walisiswa' w.id %}">
+                            {% csrf_token %}
+                          <button type="button" class="btn bg-gradient-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                          <input type="submit" class ="btn btn-danger" name="Confirm">
+                        </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+                  {% endfor %}
+                </tbody>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      ...
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+</div> -->
+
+</main>
+
+<script src="{% static "assets/js/plugins/datatables.js" %}"></script>
+<script>
+   if (document.getElementById('datatable-search')) {
+      const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {
+      searchable: true,
+      fixedHeight: false,
+      perPage: 5
+      });
+      
+      document.querySelectorAll(".export").forEach(function(el) {
+      el.addEventListener("click", function(e) {
+         var type = el.dataset.type;
+
+         var data = {
+            type: type,
+            filename: "soft-ui-" + type,
+         };
+
+         if (type === "csv") {
+            data.columnDelimiter = "|";
+         }
+
+         dataTableSearch.export(data);
+      });
+      });
+   };
+</script>
+    
+
+  
+{% endblock content  %}

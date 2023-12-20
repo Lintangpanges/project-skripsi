@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content  %}    
+         
+  <!-- Card Basic Info -->
+  <form  method="POST" action="" class="multisteps-form__form mb-12">
+    {% csrf_token %}
+  <div class="card mt-4" id="basic-info">
+    <div class="card-header">
+      <h5>Data Siswa</h5>
+    </div>
+    <div class="card-body pt-0">
+      <div class="row">
+        <div class="col-sm-4 col-6">
+          <label class="form-label mt-4"></label>
+          <div>
+            {{form2.nama_siswa|as_crispy_field}}
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-4"></label>
+              <div>
+                {{form2.nis|as_crispy_field}}
+              </div>
+            </div>
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-4"></label>
+              <div>
+                {{form2.nisn|as_crispy_field}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-6">
+          <label class="form-label mt-4"></label>
+          <div>
+            {{form2.tahun_angkatan|as_crispy_field}}
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-4"></label>
+              <div>
+                {{form2.tempat_lahir|as_crispy_field}}
+              </div>
+            </div>
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-4"></label>
+              <div>
+                {{form2.tanggal_lahir|as_crispy_field}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-6">
+          <label class="form-label mt-3"></label>
+          <div>
+            {{form2.alamat|as_crispy_field}}
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-3"></label>
+              <div>
+                {{form2.jenis_kelamin|as_crispy_field}}
+              </div>
+            </div>
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-4">Nama walisiswa</label>
+              <div>
+                <input class="form-control mt-2" type="text" placeholder= "{{user.walisiswa}}" aria-label="Disabled input example" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-6">
+          <label class="form-label mt-4"></label>
+          <div>
+            {{form2.status|as_crispy_field}}
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-4"></label>
+              <div>
+                {{form2.shadow_teacher|as_crispy_field}}
+              </div>
+            </div>
+            <div class="col-sm-6 col-5">
+              <label class="form-label mt-4"></label>
+              <div class="form-control mt-2">
+                {{form2.is_abk|as_crispy_field}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-row d-flex mt-4">                        
+        <input type="submit"  name="Submit" button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"></button>
+      </div>
+      <!-- <div class="button-row">                        
+        <input type="submit"  name="Update" button class="btn bg-gradient-dark  btn-sm float-end mt-6 mb-0" type="button"></button>
+        <button class="btn bg-gradient-light mt-6 mb-0 js-btn-prev" type="button" title="Prev">
+        <a href="{% url 'userpage_walisiswa'%}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+          Back
+        </a>
+      </button>
+      </div> -->
+      </div>
+    </div>
+    </form>
+   
+
+             
+           
+          
+          <!-- <script src="{% static "assets/js/core/popper.min.js" %}"></script>
+
+          <script src="{% static "assets/js/core/popper.min.js" %}"></script>
+          <script src="{% static "assets/js/core/bootstrap.min.js" %}"></script> -->
+          <script src="{% static "assets/js/plugins/perfect-scrollbar.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/smooth-scrollbar.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/multistep-form.js" %}"></script>
+          <!-- Kanban scripts -->
+          <script src="{% static "assets/js/plugins/dragula/dragula.min.js" %}"></script>
+          <script src="{% static "assets/js/plugins/jkanban/jkanban.js" %}"></script>
+     
+
+ 
+{% endblock content  %}
